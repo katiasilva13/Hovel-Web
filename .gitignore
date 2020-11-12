@@ -1,0 +1,8 @@
+# Miscellaneous
+/api/model/sql.php
+/assets/extra-libs/
+/assets/libs/
+!/assets/libs/bootstrap/css
+/dist/js/
+/dist/css/icons/
+/site_publisher/
