@@ -3,7 +3,7 @@
 include('pessoa.php');
 class Funcionario extends Pessoa{
     private $idFuncionario, $idPessoa, $idCargo, $horario;
-    /*
+    
     public function __construct($nome, $email, $usuario, $senha, $cpf, $horario="")
     {
         parent::__construct($nome, $email, $usuario, $senha, $cpf);
@@ -125,6 +125,6 @@ class Funcionario extends Pessoa{
     }
     public function getHorario(){
         return $this->horario;
-    }*/
+    }
 }
 ?>
