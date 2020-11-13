@@ -86,8 +86,7 @@ class Pessoa{
             $this->setData($results[0]);
     }
 
-    public function update($usuario, $senha){
-        $senha = md5($senha); 
+    public function update($idPessoa, $idEndereco, $usuario, $senha, $email, $nome, $telefone, $cpf){
         $this->setUsuario($usuario);
         $this->setSenha($senha);
 

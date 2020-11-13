@@ -6,8 +6,6 @@ if (isset($_POST)){
         $usuario = filter_input(INPUT_POST, "usuario", FILTER_SANITIZE_STRING);
         $senha = filter_input(INPUT_POST, "senha", FILTER_SANITIZE_STRING);
 
-//var_dump("usuario=".$usuario."senha=".$senha); exit;
-
         include("../model/autenticar.php");
         $autenticarUsuario = new Autenticar();
         $login = $autenticarUsuario ->autenticarUsuario($usuario, $senha);
@@ -16,7 +14,7 @@ if (isset($_POST)){
             $_SESSION["idPessoa"] = $login[0]["idPessoa"];
             $_SESSION["usuario"] = $login[0]["usuario"];
             $_SESSION["senha"] = $login[0]["senha"];
-            header('location: ../../home.php');
+            header('location: ../../view/home.php');
         }else{
           header('location: ../../view/formLogin.php?mensagem=erroUsuario');
         }

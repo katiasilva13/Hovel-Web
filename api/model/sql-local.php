@@ -1,6 +1,6 @@
 <?php
 
-class Sql extends PDO
+class SqlLocal extends PDO
 {
     private $conn;
 

@@ -89,6 +89,19 @@ class Funcionario extends Pessoa{
             return $results;
     }
 
+    public function update($idPessoa, $idEndereco, $usuario, $senha, $email, $nome, $telefone, $cpf){
+        $this->setUsuario($usuario);
+        $this->setSenha($senha);
+
+        $sql = new Sql();
+        $sql->query("UPDATE pessoa SET usuario=:LOGIN, senha=:PASSWORD WHERE idPessoa=:ID",
+        array(
+            ":LOGIN"=>$this->getUsuario(),
+            ":PASSWORD"=>$this->getSenha(),
+            ":ID"=>$this->getIdPessoa()
+        ));
+    }
+
     /*
     public function delete(){
         $sql = new Sql();

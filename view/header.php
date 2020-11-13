@@ -1,3 +1,5 @@
+<?php require("validateLogin.php"); ?>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="pt-br">
 
@@ -116,7 +118,7 @@
                             <ul aria-expanded="false" class="collapse  first-level">
                                 <li class="sidebar-item"><a href="under_construction.html" class="sidebar-link"><i class="mdi mdi-account"></i><span class="hide-menu"> Clientes </span></a></li>
                                 <li class="sidebar-item"><a href="under_construction.html" class="sidebar-link"><i class="mdi mdi-account"></i><span class="hide-menu"> Fornecedores </span></a></li>
-                                <li class="sidebar-item"><a href="under_construction.html" class="sidebar-link"><i class="mdi mdi-account"></i><span class="hide-menu"> Funcionários </span></a></li>
+                                <li class="sidebar-item"><a href="employees.php" class="sidebar-link"><i class="mdi mdi-account"></i><span class="hide-menu"> Funcionários </span></a></li>
                             </ul>
                         </li>                        
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="under_construction.html" aria-expanded="false"><i class="mdi mdi-scale"></i><span class="hide-menu"> Cozinha </span></a></li>                                                 
@@ -128,7 +130,11 @@
                                 <li class="sidebar-item"><a href="under_construction.html" class="sidebar-link"><i class="mdi mdi-calendar-check"></i><span class="hide-menu"> Calendário </span></a></li>
                                 <li class="sidebar-item"><a href="under_construction.html" class="sidebar-link"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Gráficos</span></a></li>
                             </ul>
-                        </li>                           
+                        </li>  
+                        
+                        <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="sandbox_screen.html" aria-expanded="false"><i class="fas fa-box-open"></i><span class="hide-menu"> Sandbox </span></a></li>  -->                      
+
+
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
