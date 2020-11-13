@@ -53,11 +53,10 @@ class Autenticar{
   }
 
   public function logout(){
-    if($this->conn=null){
+    if(is_null($this->conn=null)){
       return 1;
     }else {
       return 0;
     }
-
   }
 }

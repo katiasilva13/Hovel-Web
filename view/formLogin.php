@@ -1,5 +1,5 @@
 <?php
- require("validateLogin.php");
+ //require("validateLogin.php");
 ?>
 
 <!DOCTYPE html>

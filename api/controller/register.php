@@ -11,7 +11,7 @@
     		!empty($_POST["senha"])
     ){
         $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_STRING);
-        $cpf = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_STRING);
+        $cpf = filter_input(INPUT_POST, "cpf", FILTER_SANITIZE_STRING);
         $usuario = filter_input(INPUT_POST, "usuario", FILTER_SANITIZE_STRING);
         $senha = filter_input(INPUT_POST, "senha", FILTER_SANITIZE_STRING);
 
@@ -20,13 +20,19 @@
         } else {
           $email = filter_input(INPUT_POST, "email");
         }
-        include("../model/pessoa.php");
-        $insertPessoa = new Pessoa();
-        $i = $insertUsuario->addUsuario($nome, $email, $cpf, $usuario,$senha);
+
+        //var_dump("usuario=".$usuario."senha=".$senha); exit;
+
+        include("../model/funcionario.php");
+        $insertUsuario = new Funcionario($nome, $email, $usuario, $senha, $cpf, $horario="");
+        $i = $insertUsuario->insert();
+
+       // var_dump("i=".$i[0]); exit;
       
         if ($i){
-            header('location: ../../view/formLogin.php?mensagem=sucesso');
-        }
+            header('location: ../../view/formLogin.php');
+        }else
+          header('location: ../../view/formRegister.php?mensagem=erro');
       }else{
           header('location: ../../view/formRegister.php?mensagem=erro');
       }

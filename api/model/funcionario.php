@@ -25,7 +25,7 @@ class Funcionario extends Pessoa{
             "horario"=>$this->getHorario()         
         ));
     }
-        
+
     public static function getList(){
         $sql = new Sql();
         return $sql->select("SELECT * FROM funcionario ORDER BY idFuncionario ASC;");
@@ -86,6 +86,7 @@ class Funcionario extends Pessoa{
         $results = $sql->select("SELECT * FROM funcionario WHERE idFuncionario = LAST_INSERT_ID()");
         if(count($results) > 0)
             $this->setData($results[0]);
+            return $results;
     }
 
     /*

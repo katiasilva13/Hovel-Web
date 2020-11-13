@@ -41,27 +41,50 @@
                         <span class="db"><img src="../assets/images/logo.png" alt="logo" /></span>
                     </div>
                     <!-- Form -->
-                    <form class="form-horizontal m-t-20" action="../home.php">
+                    <div class="row">
+                        <div class="col">
+                            <?php
+                            if (!isset($_GET) || empty($_GET)) {
+                                //$erro = 'Nada foi postado.';
+                            } else {
+                                if ($_GET["mensagem"] == "sucesso") {
+                            ?>
+                                <div class="alert alert-success" role="alert">
+                                    Usuário Cadastrado com sucesso!!!
+                                </div>
+                                <?php
+                                } else {
+                                ?>
+                                <div class="alert alert-danger" role="alert">
+                                    Ocorreu um erro ao gravar o Usuário!!!
+                                </div>
+                            <?php
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <form class="form-horizontal m-t-20" action="../api/controller/register.php" method="post">
                         <div class="row p-b-30">
                             <div class="col-12">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Nome completo" aria-label="Nome" aria-describedby="basic-addon1" required>
+                                    <input type="text" class="form-control form-control-lg" placeholder="Nome completo" aria-label="Nome" name="nome" aria-describedby="basic-addon1" required>
                                 </div>
                                 <!-- email -->
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-danger text-white" id="basic-addon1"><i class="ti-email"></i></span>
                                     </div>
-                                    <input type="email" class="form-control form-control-lg" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" required>
+                                    <input type="email" class="form-control form-control-lg" placeholder="Email" aria-label="Email" name="email" aria-describedby="basic-addon1" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
                                     </div>
-                                    <input type="text" class="form-control form-control-lg" placeholder="CPF" aria-label="Cpf" aria-describedby="basic-addon1" required>
+                                    <input type="text" class="form-control form-control-lg" placeholder="CPF" aria-label="Cpf" name="cpf" aria-describedby="basic-addon1" required>
                                 </div>
                             </div>
                         </div>
@@ -71,19 +94,19 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Usuário" aria-label="Username" aria-describedby="basic-addon1" required>
+                                    <input type="text" class="form-control form-control-lg" placeholder="Usuário" aria-label="usuario" name="usuario" aria-describedby="basic-addon1" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
                                     </div>
-                                    <input type="password" class="form-control form-control-lg" placeholder="Senha" aria-label="Password" aria-describedby="basic-addon1" required>
+                                    <input type="password" class="form-control form-control-lg" placeholder="Senha" aria-label="Password" name="senha"  aria-describedby="basic-addon1" required>
                                 </div>
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-3 d-none">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-info text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
                                     </div>
-                                    <input type="password" class="form-control form-control-lg" placeholder="Confirmar senha" aria-label="Password" aria-describedby="basic-addon1" required>
+                                    <!--<input type="password" class="form-control form-control-lg" placeholder="Confirmar senha" aria-label="Password"  name="confirmaSenha"   aria-describedby="basic-addon1" required> -->
                                 </div>
                             </div>
                         </div>
