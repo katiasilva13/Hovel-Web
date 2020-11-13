@@ -41,7 +41,7 @@
                         <span class="db"><img src="../assets/images/logo.png" alt="logo" /></span>
                     </div>
                     <!-- Form -->
-                    <form class="form-horizontal m-t-20" action="../home.html">
+                    <form class="form-horizontal m-t-20" action="../home.php">
                         <div class="row p-b-30">
                             <div class="col-12">
                                 <div class="input-group mb-3">

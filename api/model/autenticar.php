@@ -1,13 +1,11 @@
 <?php
-include('sql.php');
-class Validate{
-  private $usuario, $senha, $conexao;
-  private $autenticado;
+class Autenticar{
+  private $usuario, $senha, $conexao, $autenticado;
 
   public function __construct(){
-    include ("Conexao.php");
-    $conectar = new Conectar();
-    $this->conexao=$conectar->conectar();
+    include ("sql.php");
+    $conn = new Sql();
+    $this->conexao=$conn;
   }
   
   public function getConexao(){
@@ -33,18 +31,17 @@ class Validate{
   }
 
   public function buscarUsuario($usuario, $senha){
-    $senha = md5($senha);  
-    if($this->getConexao()){
-      $query = "SELECT * FROM usuario where login = '". $usuario . "' AND senha = '" . $senha. "'";//2
-      $busca = $this->conexao->query($query);
-      $retornoBanco = array();
-      while ($linha = $busca->fetch_assoc()) {
-        $retornoBanco[] = $linha;
+    $senha = md5($senha); 
+    $sql = new Sql();
+    $results = $sql->select("SELECT * FROM pessoa where usuario = :LOGIN and senha = :PASSWORD", 
+        array(":LOGIN"=>$usuario, 
+            ":PASSWORD"=>$senha)
+        );
+     if(count($results)>0){
+          return $results;
+      }else{
+          throw new Exception("Erro");
       }
-      return $retornoBanco;
-    }else{
-      echo "Erro";
-    }
   }
 
   public function validarLogin(){
@@ -55,8 +52,8 @@ class Validate{
     }
   }
 
-  public function deslogar(){
-    if($this->getConexao()->close()){
+  public function logout(){
+    if($this->conn=null){
       return 1;
     }else {
       return 0;

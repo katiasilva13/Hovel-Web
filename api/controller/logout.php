@@ -1,7 +1,7 @@
 <?php
-include("model/validate.php");
-$validateUser = new Validate();
-$sair = $validateUser->logout();
+include("../model/autenticar.php");
+$autenticarUsuario = new Autenticar();
+$sair = $autenticarUsuario->logout();
 if ($sair){
   echo "Base fechada";
   session_start();

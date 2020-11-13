@@ -1,5 +1,5 @@
 <?php
-    require_once('config.php');
+  //  require_once('config.php');
  //   include('api/model/pessoa.php');
     include('api/model/funcionario.php');
 /*
@@ -52,10 +52,11 @@
     */ 
 
     /*    
-    $func = new Funcionario("aparato futurista 1","aparato@futurista.com","aparatoFuturista","12345","12345678900","");
-    $func->insert();
+    $func = new Funcionario("aparato futurista 12","aparato@futurista12.com","aparatoFuturista1","12345","12345678900","");
+  //  $nome, $email, $usuario, $senha, $cpf, $horario="")
+  $func->insert();
     echo $func;
-    */
+      */
 
  /*   //atualizando um aluno
     $aluno = new Usuario();

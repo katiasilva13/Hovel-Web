@@ -1,8 +1,8 @@
 <?php
 //criação do autoloader
-spl_autoload_register(function($class_name){ //new Usuario
+spl_autoload_register(function($class_name){ 
 
-    $filename = "class" . DIRECTORY_SEPARATOR . $class_name.".php";//Usuario.php
+    $filename = "class" . DIRECTORY_SEPARATOR . $class_name.".php";
 
     if (file_exists($filename)){
         require_once($filename);

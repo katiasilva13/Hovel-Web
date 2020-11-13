@@ -1,3 +1,7 @@
+<?php
+ require("validateLogin.php");
+?>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="pt-br">
 
@@ -41,20 +45,56 @@
                         <span class="db"><img src="../assets/images/logo.png" alt="logo" /></span>
                     </div>
                     <!-- Form -->
-                    <form class="form-horizontal m-t-20" id="loginform" action="../home.html">
+                    <div class="row">
+                        <div class="col">
+                            <?php
+                            if (!isset($_GET) || empty($_GET)) {
+                                //$erro = 'Nada foi postado.';
+                            } else {
+                                $mensagem = $_GET["mensagem"];
+                                if ($mensagem == "sucesso") {
+                            ?>
+                                    <div class="alert alert-success" role="alert">
+                                        Logado
+                                    </div>
+                                <?php
+                                } elseif ($mensagem == "erroUsuario") {
+                                ?>
+                                    <div class="alert alert-danger" role="alert">
+                                        Ocorreu um erro ao logar no sistema. <br>Usuário Inválido!!!
+                                    </div>
+                                <?php
+                                } elseif ($mensagem == "erroCampos") {
+                                ?>
+                                    <div class="alert alert-danger" role="alert">
+                                        Ocorreu um erro ao logar no sistema!!!<br>Campos não preenchidos!!!
+                                    </div>
+                                <?php
+                                } elseif ($mensagem == "erroPOST") {
+                                ?>
+                                    <div class="alert alert-danger" role="alert">
+                                        Ocorreu um erro ao logar no sistema!!!<br>Os dados não foram enviados!!!
+                                    </div>
+                            <?php
+                                }
+                            }
+                            ?>
+                        </div>                          
+                 </div>  
+                    <form class="form-horizontal m-t-20" id="loginform" action="../api/controller/login.php" method="post">
                         <div class="row p-b-30">
                             <div class="col-12">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Usuário" aria-label="Username" aria-describedby="basic-addon1" required="">
+                                    <input type="text" class="form-control form-control-lg" placeholder="Usuário" aria-label="usuario" name="usuario" aria-describedby="basic-addon1" required="">
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
                                     </div>
-                                    <input type="password" class="form-control form-control-lg" placeholder="Senha" aria-label="Password" aria-describedby="basic-addon1" required="">
+                                    <input type="password" class="form-control form-control-lg" placeholder="Senha" aria-label="senha" name="senha" aria-describedby="basic-addon1" required="">
                                 </div>
                             </div>
                         </div>
@@ -76,7 +116,8 @@
                     </div>
                     <div class="row m-t-20">
                         <!-- Form -->
-                        <form class="col-12" action="home.html">
+                        <!-- action= enviar pra classe que faz envio de email -->
+                        <form class="col-12" action="../home.php">
                             <!-- email -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">

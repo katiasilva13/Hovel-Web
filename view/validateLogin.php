@@ -1,6 +1,6 @@
 <?php
- session_start();//abre a sessão
+ session_start();
  if (!$_SESSION){
-   header("location: view/formLogin.php");
+   header("location: formLogin.php");
   }
 ?>

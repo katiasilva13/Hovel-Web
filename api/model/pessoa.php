@@ -56,6 +56,7 @@ class Pessoa{
     } 
 
     public function login($usuario, $senha){
+        $senha = md5($senha); 
         $sql = new Sql();
         $results = $sql->select("SELECT * FROM pessoa where usuario = :LOGIN and senha = :PASSWORD", 
         array(":LOGIN"=>$usuario, 
@@ -78,14 +79,15 @@ class Pessoa{
                                     ":PASSWORD"=>$this->getSenha(), 
                                     ":CPF"=>$this->getCpf(), 
                                     ":TELEFONE"=>$this->getTelefone()
-                                ));
-                                
+                                ));      
+        
         $results = $sql->select("SELECT * FROM pessoa WHERE idPessoa = LAST_INSERT_ID()");
         if(count($results) > 0)
             $this->setData($results[0]);
     }
 
     public function update($usuario, $senha){
+        $senha = md5($senha); 
         $this->setUsuario($usuario);
         $this->setSenha($senha);
 
@@ -144,7 +146,7 @@ class Pessoa{
         return $this->usuario;
     }
     private function setSenha($value){
-        $this->senha=$value;
+        $this->senha=md5($value);
     }
     public function getSenha(){
         return $this->senha;

@@ -1,3 +1,8 @@
+<?php
+ require("validateLogin.php");
+?>
+
+
 <!DOCTYPE html>
 <html dir="ltr" lang="pt-br">
 
@@ -43,7 +48,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="../home.html">
+                    <a class="navbar-brand" href="../home.php">
                         <!-- Logo icon -->
                         <b class="logo-icon p-l-10">
                             <!-- Dark Logo icon -->
@@ -107,7 +112,7 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="p-t-30">
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../home.html" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Home </span></a></li>             
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../home.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Home </span></a></li>             
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-bulletin-board"></i><span class="hide-menu">Vendas </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
                                 <li class="sidebar-item"><a href="under_construction.html" class="sidebar-link"><i class="mdi mdi-counter"></i><span class="hide-menu"> Balcão </span></a></li>
@@ -155,7 +160,7 @@
                     <div class="ml-auto text-right">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="../home.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="../home.php">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Perfil</li>
                             </ol>
                         </nav>
