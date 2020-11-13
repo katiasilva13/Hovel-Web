@@ -102,8 +102,9 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <div class="p-t-20">
-                                        <button class="btn btn-info" id="to-recover" type="button"><i class="fa fa-lock m-r-5"></i> Esqueci minha senha</button>
-                                        <button class="btn btn-success float-right" type="submit">Login</button>
+                                        <button class="btn btn-info d-none" id="to-recover" type="button"><i class="fa fa-lock m-r-5"></i> Esqueci minha senha</button>
+                                        <!-- <button class="btn btn-success float-right" type="submit">Login</button> -->
+                                        <button class="btn btn-block btn-lg btn-info" type="submit">Login</button>
                                     </div>
                                 </div>
                             </div>
