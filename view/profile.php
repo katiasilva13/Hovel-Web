@@ -100,8 +100,8 @@
                                             class="form-control form-control-line">
                                     </div>
                                 </div>      
-                                <label class="col-md-12"><h5>Endereço</h5> </label>                        
-                                <div class="form-group col-md-5">
+                                <label class="col-md-12 d-none"><h5>Endereço</h5> </label>                        
+                                <div class="form-group col-md-5  d-none">
                                     <label for="example-email" class="col-md-12">Rua</label>
                                     <div class="col-md-12">
                                         <input type="text" placeholder="ABCD"
@@ -109,7 +109,7 @@
                                             id="example-rua">
                                     </div>
                                 </div>
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-3  d-none">
                                     <label for="example-email" class="col-md-10">Número</label>
                                     <div class="col-md-10">
                                         <input type="text" placeholder="440"
@@ -117,35 +117,35 @@
                                             id="example-num">
                                     </div>
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-4  d-none">
                                     <label class="col-md-12">Complemento</label>
                                     <div class="col-md-12">
                                         <input type="text" placeholder="Apartamento, casa..."
                                             class="form-control form-control-line">
                                     </div>
                                 </div> 
-                                <div class="form-group col-md-12">
+                                <div class="form-group col-md-12  d-none">
                                     <label class="col-md-12">Bairro</label>
                                     <div class="col-md-12">
                                         <input type="text" placeholder="ABC"
                                             class="form-control form-control-line">
                                     </div>
                                 </div> 
-                                <div class="form-group col-md-5">
+                                <div class="form-group col-md-5  d-none">
                                     <label class="col-md-12">Cidade</label>
                                     <div class="col-md-12">
                                         <input type="text" placeholder="Cidade Teste"
                                             class="form-control form-control-line">
                                     </div>
                                 </div> 
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-4  d-none">
                                     <label class="col-md-12">UF</label>
                                     <select id="inputState" class="form-control">
                                         <option selected>Escolha...</option>
                                         <option>...</option>
                                       </select>
                                 </div> 
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-3  d-none">
                                     <label class="col-md-12">CEP</label>
                                     <div class="col-md-12">
                                         <input type="text" placeholder="87000-000"
@@ -154,7 +154,7 @@
                                 </div> 
                                 <div class="form-group col-md-12">
                                     <div class="col-sm-12">
-                                        <button type="submit" class="btn btn-success">Salvar</button>
+                                        <button type="submit" class="btn btn-block btn-success">Salvar</button>
                                     </div>
                                 </div>
                             </form>
