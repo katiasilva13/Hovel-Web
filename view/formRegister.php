@@ -64,7 +64,7 @@
                             ?>
                         </div>
                     </div>
-                    <form class="form-horizontal m-t-20" action="../api/controller/register.php" method="post">
+                    <form class="form-horizontal m-t-20" action="../api/controller/registerUser.php" method="post">
                         <div class="row p-b-30">
                             <div class="col-12">
                                 <div class="input-group mb-3">

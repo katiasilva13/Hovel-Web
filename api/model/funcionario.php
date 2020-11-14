@@ -4,9 +4,9 @@ include('pessoa.php');
 class Funcionario extends Pessoa{
     private $idFuncionario, $idPessoa, $idCargo, $horario;
     
-    public function __construct($nome, $email, $usuario, $senha, $cpf, $horario="")
+    public function __construct($nome="", $email="", $usuario="", $senha="", $cpf="", $telefone="", $horario="")
     {
-        parent::__construct($nome, $email, $usuario, $senha, $cpf);
+        parent::__construct($nome, $email, $usuario, $senha, $cpf, $telefone);
         $this->setHorario($horario);
     }
     
@@ -89,48 +89,26 @@ class Funcionario extends Pessoa{
             return $results;
     }
 
-    public function update($idPessoa, $idEndereco, $usuario, $senha, $email, $nome, $telefone, $cpf){
-        $this->setUsuario($usuario);
-        $this->setSenha($senha);
-
-        $sql = new Sql();
-        $sql->query("UPDATE pessoa SET usuario=:LOGIN, senha=:PASSWORD WHERE idPessoa=:ID",
-        array(
-            ":LOGIN"=>$this->getUsuario(),
-            ":PASSWORD"=>$this->getSenha(),
-            ":ID"=>$this->getIdPessoa()
-        ));
-    }
-
-    /*
-    public function delete(){
-        $sql = new Sql();
-        $sql->query("DELETE FROM pessoa WHERE idPessoa = :ID",
-        array(":ID"=>$this->getIdPessoa())
-        );
+    public function update($idFuncionario, $nome, $email, $usuario, $senha, $cpf, $telefone){
+        $this->setIdFuncionario($idFuncionario);        
         
-        $sql->query("DELETE FROM funcionario WHERE idFuncionario = :ID",
-        array(":ID"=>$this->getIdFuncionario())
-        );
-        //depois que excluiu limpa os dados do objeto
-        $this->setIdFuncionario(0);
-        $this->setIdPessoa(0);
-        $this->setIdCargo(0);
-        $this->setHorario("");
+        $sql = new Sql();
+        $idP = $sql->select("SELECT pessoa_idpessoa FROM funcionario WHERE idFuncionario = :ID",
+        array(
+            ":ID"=>$this->getIdFuncionario()
+        ));
+        $this->setIdPessoa($idP[0]['pessoa_idpessoa']);
+
+        $pessoa = new Pessoa();
+        $pessoa->update($this->getIdPessoa(), $nome, $email, $usuario, $senha, $cpf, $telefone); 
     }
-*/
+    
     private function setIdFuncionario($value){
         $this->idFuncionario=$value;
     }
     public function getIdFuncionario(){
         return $this->idFuncionario;
-    }
-    private function setIdPessoa($value){
-        $this->idPessoa=$value;
-    }
-    public function getIdPessoa(){
-        return $this->idPessoa;
-    }
+    }    
     private function setIdCargo($value){
         $this->idCargo=$value;
     }

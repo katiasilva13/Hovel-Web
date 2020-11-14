@@ -7,7 +7,7 @@
     if (!empty($_POST["nome"]) &&
 		    !empty($_POST["email"]) &&
     		!empty($_POST["cpf"]) &&
-  		    !empty($_POST["usuario"])&&
+  		  !empty($_POST["usuario"])&&
     		!empty($_POST["senha"])
     ){
         $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_STRING);
@@ -24,7 +24,7 @@
         //var_dump("usuario=".$usuario."senha=".$senha); exit;
 
         include("../model/funcionario.php");
-        $insertUsuario = new Funcionario($nome, $email, $usuario, $senha, $cpf, $horario="");
+        $insertUsuario = new Funcionario($nome, $email, $usuario, $senha, $cpf, $telefone, $horario);
         $i = $insertUsuario->insert();
 
        // var_dump("i=".$i[0]); exit;

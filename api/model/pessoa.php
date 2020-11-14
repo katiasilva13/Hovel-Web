@@ -1,15 +1,16 @@
 <?php
 include('sql.php');
 class Pessoa{
-    private $idPessoa, $idEndereco, $usuario, $senha, $email, $nome, $telefone, $cpf;
+    private $idPessoa, $idEndereco, $usuario, $senha, $email, $nome, $cpf, $telefone;
     
-    public function __construct($nome, $email, $usuario, $senha, $cpf)
+    public function __construct($nome="", $email="", $usuario="", $senha="", $cpf="", $telefone="")
     {
         $this->setNome($nome);
         $this->setEmail($email);
         $this->setUsuario($usuario);
         $this->setSenha($senha);
         $this->setCpf($cpf);
+        $this->setTelefone($telefone);
     }
     
     public function setData($data){
@@ -86,15 +87,26 @@ class Pessoa{
             $this->setData($results[0]);
     }
 
-    public function update($idPessoa, $idEndereco, $usuario, $senha, $email, $nome, $telefone, $cpf){
+    public function update($idPessoa, $nome, $email, $usuario, $senha, $cpf, $telefone){
+    //  $this->setIdEndereco($idEndereco);
+        $this->setIdPessoa($idPessoa);
         $this->setUsuario($usuario);
         $this->setSenha($senha);
+        $this->setEmail($email);
+        $this->setNome($nome);
+        $this->setCpf($cpf);
+        $this->setTelefone($telefone);
 
         $sql = new Sql();
-        $sql->query("UPDATE pessoa SET usuario=:LOGIN, senha=:PASSWORD WHERE idPessoa=:ID",
+        $sql->query("UPDATE pessoa SET nome=:NOME, telefone=:TELEFONE, cpf=:CPF, email=:EMAIL, usuario=:LOGIN, senha=:PASSWORD WHERE idPessoa=:ID",
         array(
+          //  ":ID_END"=>$this->getIdEndereco(),
             ":LOGIN"=>$this->getUsuario(),
             ":PASSWORD"=>$this->getSenha(),
+            ":NOME"=>$this->getNome(),
+            ":EMAIL"=>$this->getEmail(),
+            ":CPF"=>$this->getCpf(),
+            ":TELEFONE"=>$this->getTelefone(),
             ":ID"=>$this->getIdPessoa()
         ));
     }
@@ -114,49 +126,49 @@ class Pessoa{
         $this->setTelefone("");
     }
 
-    private function setIdPessoa($value){
+    public function setIdPessoa($value){
         $this->idPessoa=$value;
     }
     public function getIdPessoa(){
         return $this->idPessoa;
     }
-    private function setIdEndereco($value){
+    public function setIdEndereco($value){
         $this->idEndereco=$value;
     }
     public function getIdEndereco(){
         return $this->idEndereco;
     }
-    private function setNome($value){
+    public function setNome($value){
         $this->nome=$value;
     }
     public function getNome(){
         return $this->nome;
     }
-    private function setEmail($value){
+    public function setEmail($value){
         $this->email=$value;
     }
     public function getEmail(){
         return $this->email;
     }
-    private function setUsuario($value){
+    public function setUsuario($value){
         $this->usuario=$value;
     }
     public function getUsuario(){
         return $this->usuario;
     }
-    private function setSenha($value){
+    public function setSenha($value){
         $this->senha=md5($value);
     }
     public function getSenha(){
         return $this->senha;
     }
-    private function setCpf($value){
+    public function setCpf($value){
         $this->cpf=$value;
     }
     public function getCpf(){
         return $this->cpf;
     }
-    private function setTelefone($value){
+    public function setTelefone($value){
         $this->telefone=$value;
     }
     public function getTelefone(){

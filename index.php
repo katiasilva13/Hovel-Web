@@ -58,6 +58,12 @@
     echo $func;
       */
 
+ /*  // $nome, $email, $usuario, $senha, $cpf, $telefone
+       
+  $updateUsuario = new Funcionario();
+      $updateUsuario->update("19", "SÓ VAMO", "aparato@futurista12.com", "aparatoFuturista12", "1234", 12345678900, 44999999999);
+ */
+
  /*   //atualizando um aluno
     $aluno = new Usuario();
     $aluno->loadById(8);

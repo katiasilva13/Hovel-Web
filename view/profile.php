@@ -94,8 +94,8 @@
                                     </div>
                                 </div> 
                                 <div class="form-group col-md-6">
-                                    <label class="col-md-8">Senha</label>
-                                    <div class="col-md-8">
+                                    <label class="col-md-12">Senha</label>
+                                    <div class="col-md-12">
                                         <input type="password" value="password"
                                             class="form-control form-control-line">
                                     </div>
