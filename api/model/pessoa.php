@@ -51,6 +51,7 @@ class Pessoa{
     public function loadById($id){
         $this->setIdPessoa($id);   
         $sql = new Sql();
+        $results = array();
         $results = $sql->select("SELECT * FROM pessoa where idPessoa = :id", array(":id"=>$id));
         if(count($results) > 0){
           $this->setData($results[0]);
@@ -178,4 +179,3 @@ class Pessoa{
         return $this->telefone;
     }
 }
-?>

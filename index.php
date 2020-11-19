@@ -71,7 +71,7 @@ var_dump($loadUser);exit;
 */
 $loadUser = new Pessoa();
  $loadUser->loadById(49);
- var_dump($loadUser->getI);exit;
+ var_dump($loadUser);exit;
 
  /*   //atualizando um aluno
     $aluno = new Usuario();

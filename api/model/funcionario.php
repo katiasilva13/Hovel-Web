@@ -47,7 +47,6 @@ class Funcionario extends Pessoa{
         if(count($results) > 0){
            $this->setData($results[0]);
         }
-        return $results[0];
     } 
 
     public function loadUserById($idFuncionario){
@@ -66,7 +65,6 @@ class Funcionario extends Pessoa{
         if(count($results) > 0){
             $this->setData($results[0]);
         }
-        return $results[0];
     }
 
     public function login($usuario, $senha){
@@ -143,4 +141,3 @@ class Funcionario extends Pessoa{
         return $this->horario;
     }
 }
-?>

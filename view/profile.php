@@ -79,46 +79,46 @@
                                     }
                                 }
                             } elseif (!empty($_GET["idPessoa"])) {
-                                $id = $_GET["idPessoa"]; 
+                                $id = $_GET["idPessoa"];
                                 $tipo = "unico";
-                              $retorno = array();
-                            include("../api/controller/readUser.php");
-// 
-// 
-               //          var_dump($retorno);exit;          
-                                    
+                                $retorno = array();
+                                include("../api/controller/loadProfile.php");
+                                // 
+                                // 
+                                //          var_dump($retorno);exit;          
+
                                 foreach ($retorno as $value) {
-?>
+                                    ?>
 
                                     <form class="form-horizontal form-material form-row" action="../api/controller/updateUser.php" method="post">
                                         <div class="form-group col-md-12">
-                                            <label class="col-md-10">Nome Completo <?=$id ?></label>
+                                            <label class="col-md-10">Nome Completo <?= $id ?></label>
                                             <div class="col-md-12">
-                                                <input type="text"  id="nome" name="nome" value='<?= $value["nome"]; ?>' placeholder="Aparato Futurista" class="form-control form-control-line">
+                                                <input type="text" id="nome" name="nome" value='<?= $value["nome"]; ?>' placeholder="Aparato Futurista" class="form-control form-control-line">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label class="col-md-9">CPF</label>
                                             <div class="col-md-9">
-                                                <input type="text" id="cpf" name="cpf" value=<?= $value["cpf"]; ?>  placeholder="123.456.789-00" class="form-control form-control-line">
+                                                <input type="text" id="cpf" name="cpf" value=<?= $value["cpf"]; ?> placeholder="123.456.789-00" class="form-control form-control-line">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label class="col-md-10">Telefone</label>
                                             <div class="col-md-10">
-                                                <input type="text"  id="telefone" name="telefone" value=<?= $value["telefone"]; ?> placeholder="(44) 9 3276 0000" class="form-control form-control-line">
+                                                <input type="text" id="telefone" name="telefone" value=<?= $value["telefone"]; ?> placeholder="(44) 9 3276 0000" class="form-control form-control-line">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label class="col-md-8">Usuário</label>
                                             <div class="col-md-8">
-                                                <input type="text" id="usuario" name="usuario" value=<?= $value["usuario"]; ?>  placeholder="teste" class="form-control form-control-line">
+                                                <input type="text" id="usuario" name="usuario" value=<?= $value["usuario"]; ?> placeholder="teste" class="form-control form-control-line">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="example-email" class="col-md-12">Email</label>
                                             <div class="col-md-12">
-                                                <input type="email" id="email" name="email" value=<?= $value["email"]; ?> placeholder="aparato@futurista.com" class="form-control form-control-line" >
+                                                <input type="email" id="email" name="email" value=<?= $value["email"]; ?> placeholder="aparato@futurista.com" class="form-control form-control-line">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-6">
@@ -175,7 +175,7 @@
                                         </div>
                                         <div class="form-group col-md-12">
                                             <div class="col-sm-12">
-                                            <input type="hidden" name="idPessoa" value=<?= $value["idPessoa"]; ?>>
+                                                <input type="hidden" name="idPessoa" value=<?= $value["idPessoa"]; ?>>
                                                 <button type="submit" class="btn btn-block btn-success">Salvar</button>
                                             </div>
                                         </div>
@@ -183,8 +183,8 @@
                         <?php
                                 }
                             }
-                      }
- // 
+                        }
+                        // 
                         ?>
                     </div>
                 </div>
