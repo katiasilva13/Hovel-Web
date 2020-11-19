@@ -44,7 +44,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="../home.php">
+                    <a class="navbar-brand" href="home.php">
                         <!-- Logo icon -->
                         <b class="logo-icon p-l-10">
                             <!-- Dark Logo icon -->
@@ -84,7 +84,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                                <a class="dropdown-item" href="profile.php"><i class="ti-user m-r-5 m-l-5"></i> Perfil</a>                                
+                                <a class="dropdown-item" href="profile.php?idPessoa=<?=$_SESSION['idPessoa']?>"><i class="ti-user m-r-5 m-l-5"></i> Perfil</a>                                
                                 <a class="dropdown-item" href="../api/controller/logout.php"><i class="fa fa-power-off m-r-5 m-l-5"></i> Sair</a>
                             </div>
                         </li>
@@ -107,7 +107,7 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="p-t-30">
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../home.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Home </span></a></li>             
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="home.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Home </span></a></li>             
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-bulletin-board"></i><span class="hide-menu">Vendas </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
                                 <li class="sidebar-item"><a href="under_construction.html" class="sidebar-link"><i class="mdi mdi-counter"></i><span class="hide-menu"> Balcão </span></a></li>

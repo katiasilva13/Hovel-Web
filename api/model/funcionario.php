@@ -40,13 +40,34 @@ class Funcionario extends Pessoa{
            ));
     }
 
-    public function loadById($id){
+    public function loadById($idFuncionario){
+        $this->setIdFuncionario($idFuncionario); 
         $sql = new Sql();
-        $results = $sql->select("SELECT * FROM funcionario where idFuncionario = :id", array(":id"=>$id));
+        $results = $sql->select("SELECT * FROM funcionario where idFuncionario = :id", array(":id"=>$idFuncionario));
+        if(count($results) > 0){
+           $this->setData($results[0]);
+        }
+        return $results[0];
+    } 
+
+    public function loadUserById($idFuncionario){
+        $this->setIdFuncionario($idFuncionario);        
+        
+        $sql = new Sql();
+        $idP = $sql->select("SELECT pessoa_idpessoa FROM funcionario WHERE idFuncionario = :ID",
+        array(
+            ":ID"=>$this->getIdFuncionario()
+        ));
+        $this->setIdPessoa($idP[0]['pessoa_idpessoa']);
+        $pessoa = new Pessoa();
+       $results = $pessoa->loadById($this->getIdPessoa());
+
+ //       var_dump($results); exit;
         if(count($results) > 0){
             $this->setData($results[0]);
         }
-    } 
+        return $results[0];
+    }
 
     public function login($usuario, $senha){
         $sql = new Sql();

@@ -49,10 +49,11 @@ class Pessoa{
     }
 
     public function loadById($id){
+        $this->setIdPessoa($id);   
         $sql = new Sql();
         $results = $sql->select("SELECT * FROM pessoa where idPessoa = :id", array(":id"=>$id));
         if(count($results) > 0){
-            $this->setData($results[0]);
+          $this->setData($results[0]);
         }
     } 
 
@@ -83,8 +84,10 @@ class Pessoa{
                                 ));      
         
         $results = $sql->select("SELECT * FROM pessoa WHERE idPessoa = LAST_INSERT_ID()");
-        if(count($results) > 0)
+        if(count($results) > 0){
             $this->setData($results[0]);
+        }
+            
     }
 
     public function update($idPessoa, $nome, $email, $usuario, $senha, $cpf, $telefone){

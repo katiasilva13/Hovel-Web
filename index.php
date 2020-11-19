@@ -63,6 +63,15 @@
   $updateUsuario = new Funcionario();
       $updateUsuario->update("19", "SÓ VAMO", "aparato@futurista12.com", "aparatoFuturista12", "1234", 12345678900, 44999999999);
  */
+/*
+ $loadUser = new Funcionario();
+ $loadUser->loadById(31);
+var_dump($loadUser);exit;
+ $loadUser->loadUserById(31);
+*/
+$loadUser = new Pessoa();
+ $loadUser->loadById(49);
+ var_dump($loadUser->getI);exit;
 
  /*   //atualizando um aluno
     $aluno = new Usuario();
