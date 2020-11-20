@@ -9,7 +9,7 @@ if (isset($_POST)) {
     $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_STRING);
     $cpf = filter_input(INPUT_POST, "cpf", FILTER_SANITIZE_STRING);
     $usuario = filter_input(INPUT_POST, "usuario", FILTER_SANITIZE_STRING);
-    $senha = filter_input(INPUT_POST, "senha", FILTER_SANITIZE_STRING);
+    $senha = filter_input(INPUT_POST, "novaSenha", FILTER_SANITIZE_STRING);
 
     if (!filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL)) {
       echo ("Email is not valid");

@@ -1,72 +1,61 @@
 <?php
-class Autenticar
-{
+class Autenticar{
   private $usuario, $senha, $conexao, $autenticado;
 
-  public function __construct()
-  {
-    include("sql.php");
+  public function __construct(){
+    include ("sql.php");
     $conn = new Sql();
-    $this->conexao = $conn;
+    $this->conexao=$conn;
   }
-
-  public function getConexao()
-  {
+  
+  public function getConexao(){
     return $this->conexao;
   }
 
-  public function getAutenticado()
-  {
+  public function getAutenticado(){
     return $this->autenticado;
   }
 
-  public function autenticarUsuario($usuario, $senha)
-  {
+  public function autenticarUsuario($usuario, $senha){
     $this->usuario = $usuario;
     $this->senha = $senha;
 
-    $this->autenticado = $this->buscarUsuario($this->usuario, $this->senha);
+      $this->autenticado = $this->buscarUsuario($this->usuario, $this->senha);
 
-    if ($this->getAutenticado()) {
-      $dadosAutenticado = $this->getAutenticado();
-      return $dadosAutenticado;
-    } else {
-      echo "Não Logado";
-    }
+      if($this->getAutenticado()){
+        $dadosAutenticado = $this->getAutenticado();
+        return $dadosAutenticado;
+      }else{
+        echo "Não Logado";
+      }
   }
 
-  public function buscarUsuario($usuario, $senha)
-  {
-    $senha = md5($senha);
+  public function buscarUsuario($usuario, $senha){
+    $senha = md5($senha); 
     $sql = new Sql();
-    $results = $sql->select(
-      "SELECT * FROM pessoa where usuario = :LOGIN and senha = :PASSWORD",
-      array(
-        ":LOGIN" => $usuario,
-        ":PASSWORD" => $senha
-      )
-    );
-    if (count($results) > 0) {
-      return $results;
-    } else {
-      throw new Exception("Erro");
-    }
+    $results = $sql->select("SELECT * FROM pessoa where usuario = :LOGIN and senha = :PASSWORD", 
+        array(":LOGIN"=>$usuario, 
+            ":PASSWORD"=>$senha)
+        );
+     if(count($results)>0){
+          return $results;
+      }else{
+          throw new Exception("Erro");
+      }
   }
 
-  public function validarLogin()
-  {
-    if ($this->getAutenticado()) {
+  public function validarLogin(){
+    if($this->getAutenticado()){
       return 1;
-    } else {
+    }else{
       return 0;
     }
   }
 
-  public function logout()
-  {
-    if (is_null($this->conn = null)) {
+  public function logout(){
+    if(is_null($this->conn=null)){
       return 1;
-    } else {
+    }else {
       return 0;
     }
   }
