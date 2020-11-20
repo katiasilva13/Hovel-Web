@@ -1,8 +1,6 @@
 <?php
   if (isset($_POST)){
-    if (/*!empty($_POST["nomeProduto"]) &&
-        !empty($_POST["quantidade"]) &&
-        !empty($_POST["preco"]) &&*/
+    if (
         !empty($_POST["idProduto"])
 
     ){
