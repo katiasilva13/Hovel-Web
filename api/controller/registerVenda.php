@@ -1,9 +1,10 @@
 <?php
   if (isset($_POST)){
-  if (!empty($_POST["valorTotal"]) &&
+  if (
+    //!empty($_POST["valorTotal"]) &&
       !empty($_POST["tipoPagamento"]) 
     ){
-        $valorTotal = filter_input(INPUT_POST, "valorTotal", FILTER_SANITIZE_STRING);
+        //$valorTotal = filter_input(INPUT_POST, "valorTotal", FILTER_SANITIZE_STRING);
         $tipoPagamento = filter_input(INPUT_POST, "tipoPagamento", FILTER_SANITIZE_STRING);
         
         include("../model/venda.php");
@@ -11,7 +12,7 @@
         $i = $insertVenda->insert();
         if ($i){
            // var_dump("i=".$i[0]); exit;
-            header('location: ../../veiw/formRegisterVenda.php?mensagem=sucesso');
+            header("location: ../../view/formRegisterItensCompra.php?idVenda='$i[0]['idVenda']'");
         }else{
           header('location: ../../view/formRegisterVenda.php?mensagem=erro');
         }

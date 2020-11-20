@@ -46,15 +46,15 @@ class Venda{
 
     public function insert(){
         $sql = new Sql();
-        $sql->query("INSERT INTO venda (status, valorTotal, tipoPagamento) 
-                                value (:STATUS, :VALORTOTAL, :tipoPagamento)", 
-                                array(" :VALORTOTAL"=>$this->getValorTotal(), 
-                                    ":tipoPagamento"=>$this->getTipoPagamento(), 
+        $sql->query("INSERT INTO venda (tipoPagamento) 
+                                value (:tipoPagamento)", 
+                                array(":tipoPagamento"=>$this->getTipoPagamento(), 
                                 ));      
         
         $results = $sql->select("SELECT * FROM venda WHERE idVenda = LAST_INSERT_ID()");
         if(count($results) > 0)
             $this->setData($results[0]);
+        return $results;
     }
 
     public function update($idVenda, $valorTotal, $tipoPagamento){

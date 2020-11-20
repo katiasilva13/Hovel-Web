@@ -32,7 +32,7 @@
       ?>
     </div>
   </div>
-  <form action="../controller/registerVenda.php" method="post">
+  <form action="../api/controller/registerVenda.php" method="post">
 
     <div class="row">
       <div class="col-4">
@@ -48,7 +48,6 @@
           <?php
           //foreach ($retorno as $key => $value) {
           ?>
-            <option value=<?= $value["idCardapio"] ?>><?= $value["nomeCardapio"]; ?></option>
           <?php
          // }
           ?>
@@ -58,8 +57,8 @@
         <label for="tipoPagamento">Forma de Pagamento:</label>
         <select class="form-control" name="tipoPagamento">
           <option value="1">Dinheiro</option>
-          <option value="1">Cartão Debito</option>
-          <option value="2">Cartão credito</option>
+          <option value="2">Cartão Crédito</option>
+          <option value="3">Cartão Débito</option>
         </select>
       </div>
     </div>

@@ -89,8 +89,8 @@ class Cardapio{
         $sql = new Sql();
         //return $sql = ("SELECT c.id, c.formaPagamento, u.id, u.nome FROM compra as c, usuario as u
                    // where c.idUsuario = u.id  and c.id = ". $idCompra);
-                   return $sql = "SELECT c.id, c.tipoPagamento, u.id, u.nome FROM compra as c, usuario as u
-                where c.idUsuario = u.id  and c.id = ". $idVenda;
+                   return $sql->select("SELECT c.id, c.tipoPagamento, u.id, u.nome FROM compra as c, usuario as u
+                where c.idUsuario = u.id  and c.id = ". $idVenda);
                    
       
       }

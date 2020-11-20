@@ -16,7 +16,7 @@
       } else {
         //  if($_GET["mensagem"] == "sucesso"){
 
-        if ($_GET["mensagem"]) {
+        if (!empty($_GET["mensagem"])) {
           $mensagem = $_GET["mensagem"];
           if ($mensagem == "compraSucesso") {
       ?>
@@ -97,12 +97,12 @@
           <label for="quantidade">Quantidade:</label>
           <input type="number" id="quantidade" name="quantidade" class="form-control" placeholder="Quantidade" required>
         </div>
-      <div class="row">
-        <div class="col-4">
-          <input type="hidden" name="idVenda" value=<?= $idVenda; ?>>
-          <button type="submit" class="btn btn-primary">Adcionar</button>
+        <div class="row">
+          <div class="col-4">
+            <input type="hidden" name="idVenda" value=<?= $idVenda; ?>>
+            <button type="submit" class="btn btn-primary">Adcionar</button>
+          </div>
         </div>
-      </div>
     </form>
   </div>
   <!--dados da compra aqui.-->
@@ -119,8 +119,8 @@
               <th>PRODUTO</th>
               <th>QTD</th>
               <th>PREÇO ORIGINAL (R$)</th>
-              
-              
+
+
               <!--PONTO DE MELHORIA-->
               <th colspan="2">AÇÃO</th>
               <?php
@@ -129,8 +129,8 @@
               $i = 1;
               foreach ($retornoItensCompra as $value) {
                 $id = $value["idItensCompra"];
-                print_r("oi",$retornoItensCompra, $value);
-                var_dump("opa",$id);
+                print_r("oi", $retornoItensCompra, $value);
+                var_dump("opa", $id);
               ?>
                 <tr>
                   <td><?= $i++ ?></td>
@@ -168,7 +168,7 @@
                 </tr>
               <?php
                 $total = $total + $totalProduto;
-              } 
+              }
               //fecha foreach
               ?>
             </table>
@@ -177,10 +177,32 @@
           <div class="row">
             <div class="alert alert-success" role="alert">
               <h4>TOTAL COMPRA = R$ <?= number_format($total, 2, ',', '.'); ?> </h4>
-              <h5>Forma de Pagamento = <?= $retornoCompra[0]["tipoPagamento"] ?></h5>
+              <?= 
+              $pag =''; 
+              $parc ='0';
+              switch ($retornoCompra[0]['tipoPagamento']) {
+                case 1:
+                  $pag = 'Dinheiro';
+                  $parc = 1;
+                  break;
+                  case 2:
+                    $pag =  'Crédito';
+                    $parc = 2;
+                    break;
+                    case 3:
+                      $pag = 'Débito';
+                      $parc = 1;
+                      break;
+                default:
+                  $pag = "Erro!";
+                  break;
+              }
+              
+              ?>
+              <h5>Forma de Pagamento = <?= $pag?></h5>
               <h5>Parcelamento = <?php
 
-                                  $valorParcela = $total / $retornoCompra[0]["tipoPagamento"];
+                                  $valorParcela = $total / $parc;
                                   echo number_format($valorParcela, 2, ',', '.');
 
                                   ?></h5>
