@@ -1,7 +1,7 @@
 <?php
 include('sql.php');
 class Cardapio{
-    private $idCardapio, $nomeCardapio ,$precoCardapio;
+    private $idCardapio, $nomeCardapio ,$precoCardapio, $idVenda;
     
     public function __construct($nomeCardapio="", $precoCardapio="")
     {
@@ -84,6 +84,26 @@ class Cardapio{
         $this->setnomeCardapio("");
         $this->setPrecoCardapio("");
     }
+    
+    public function devolveCompra($idVenda){
+        $sql = new Sql();
+        //return $sql = ("SELECT c.id, c.formaPagamento, u.id, u.nome FROM compra as c, usuario as u
+                   // where c.idUsuario = u.id  and c.id = ". $idCompra);
+                   return $sql = "SELECT c.id, c.tipoPagamento, u.id, u.nome FROM compra as c, usuario as u
+                where c.idUsuario = u.id  and c.id = ". $idVenda;
+                   
+      
+      }
+
+public function produtosCompra($idVenda){
+        $sql = new Sql();
+    return $sql->select("SELECT p.nomeCardapio, i.quantidade, i.precoCardapio, i.PrecoCardapio, i.idProduto, i.idItensCompra 
+                FROM itensCompra as i, cardapio as p where i.idCardapio = p.id and i.idVenda = ". $idVenda);
+        
+      }
+
+    
+    
 
     public function setidCardapio($value){
         $this->idCardapio=$value;

@@ -71,7 +71,7 @@ class Produto{
         $this->setNomeProduto($nomeProduto);
 
         $sql = new Sql();
-        $sql->query("UPDATE produto SET nomeProduto=:NOMEPRODUTO, quantidade=:QUANTIDADE, preco=:PRECO, WHERE idProduto=:ID",
+        return $sql->query("UPDATE produto SET nomeProduto=:NOMEPRODUTO, quantidade=:QUANTIDADE, preco=:PRECO, WHERE idProduto=:ID",
         array(
             ":NOMEPRODUTO"=>$this->getnomeProduto(),
             ":QUANTIDADE"=>$this->getQuantidade(),

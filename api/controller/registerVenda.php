@@ -11,14 +11,14 @@
         $i = $insertVenda->insert();
         if ($i){
            // var_dump("i=".$i[0]); exit;
-            header('location: ../..?mensagem=sucesso');
+            header('location: ../../veiw/formRegisterVenda.php?mensagem=sucesso');
         }else{
-          header('location: ../../view/formRegisterProduto.php?mensagem=erro');
+          header('location: ../../view/formRegisterVenda.php?mensagem=erro');
         }
       }else{
-          header('location: ../../view/formRegisterProduto.php?mensagem=erro');
+          header('location: ../../view/formRegisterVenda.php?mensagem=erro');
       }
   }else{
-      header('location: ../../view/formRegisterProduto.php?mensagem=erro');
+      header('location: ../../view/formRegisterVenda.php?mensagem=erro');
   }
   ?>
