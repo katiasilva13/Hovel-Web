@@ -22,12 +22,9 @@ class Autenticar{
 
       $this->autenticado = $this->buscarUsuario($this->usuario, $this->senha);
 
-      if($this->getAutenticado()){
         $dadosAutenticado = $this->getAutenticado();
         return $dadosAutenticado;
-      }else{
-        echo "Não Logado";
-      }
+      
   }
 
   public function buscarUsuario($usuario, $senha){
@@ -39,8 +36,6 @@ class Autenticar{
         );
      if(count($results)>0){
           return $results;
-      }else{
-          throw new Exception("Erro");
       }
   }
 
