@@ -5,7 +5,7 @@ class SqlLocal extends PDO
     private $conn;
 
     public function __construct(){
-        $this->conn = new PDO("mysql:host=localhost;dbname=hovel_v1teste","root", "");
+        $this->conn = new PDO("mysql:host=localhost;dbname=hovel_v1","root", "Vivian997!");
     }
 
     private function setParams($statement, $parameters = array()){
