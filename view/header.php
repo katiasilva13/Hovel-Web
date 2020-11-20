@@ -1,4 +1,4 @@
-<?php require("validateLogin.php"); ?>
+<?php require_once("validateLogin.php"); ?>
 
 <!DOCTYPE html>
 <html dir="ltr" lang="pt-br">

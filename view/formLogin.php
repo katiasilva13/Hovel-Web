@@ -1,6 +1,3 @@
-<?php
-//require("validateLogin.php");
-?>
 
 <!DOCTYPE html>
 <html dir="ltr" lang="pt-br">
@@ -118,7 +115,7 @@
                     <div class="row m-t-20">
                         <!-- Form -->
                         <!-- action= enviar pra classe que faz envio de email -->
-                        <form class="col-12" action="../home.php">
+                        <form class="col-12" action="home.php">
                             <!-- email -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">

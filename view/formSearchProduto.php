@@ -1,4 +1,4 @@
-<?php require("headerr.php")?>
+<?php require_once("header.php")?>
 
 <div class="page-wrapper">
     <div class="page-breadcrumb">
@@ -9,7 +9,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Ferramentas</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Pesquisar produtos</li>
                                 </ol>
                             </nav>
                         </div>
