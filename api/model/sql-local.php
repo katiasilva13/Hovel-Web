@@ -31,5 +31,3 @@ class SqlLocal extends PDO
     }
 
 }
-
-?>

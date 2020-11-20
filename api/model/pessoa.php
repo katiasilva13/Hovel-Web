@@ -49,11 +49,14 @@ class Pessoa{
     }
 
     public function loadById($id){
+        $this->setIdPessoa($id);   
         $sql = new Sql();
+        $results = array();
         $results = $sql->select("SELECT * FROM pessoa where idPessoa = :id", array(":id"=>$id));
         if(count($results) > 0){
-            $this->setData($results[0]);
+          $this->setData($results[0]);
         }
+        return $results;
     } 
 
     public function login($usuario, $senha){
@@ -83,8 +86,11 @@ class Pessoa{
                                 ));      
         
         $results = $sql->select("SELECT * FROM pessoa WHERE idPessoa = LAST_INSERT_ID()");
-        if(count($results) > 0)
+        if(count($results) > 0){
             $this->setData($results[0]);
+        }
+        return $results;
+            
     }
 
     public function update($idPessoa, $nome, $email, $usuario, $senha, $cpf, $telefone){
@@ -98,7 +104,7 @@ class Pessoa{
         $this->setTelefone($telefone);
 
         $sql = new Sql();
-        $sql->query("UPDATE pessoa SET nome=:NOME, telefone=:TELEFONE, cpf=:CPF, email=:EMAIL, usuario=:LOGIN, senha=:PASSWORD WHERE idPessoa=:ID",
+        $results = $sql->query("UPDATE pessoa SET nome=:NOME, telefone=:TELEFONE, cpf=:CPF, email=:EMAIL, usuario=:LOGIN, senha=:PASSWORD WHERE idPessoa=:ID",
         array(
           //  ":ID_END"=>$this->getIdEndereco(),
             ":LOGIN"=>$this->getUsuario(),
@@ -109,6 +115,7 @@ class Pessoa{
             ":TELEFONE"=>$this->getTelefone(),
             ":ID"=>$this->getIdPessoa()
         ));
+        return $results;
     }
 
     public function delete(){
@@ -175,4 +182,3 @@ class Pessoa{
         return $this->telefone;
     }
 }
-?>
