@@ -1,6 +1,15 @@
 <?php
-  include("..\api\model\produto.php");
+include("..\api\model\produto.php");
+
   $objList = new Produto();
-  $retorno = $objList->getList();
-  return $retorno;
+
+    if ($tipo=="produto"){
+
+    $retorno = $objList->getList();
+    return $retorno;
+
+    }elseif ($tipo=="unico") {
+      $retorno = $objList->loadById($id);
+      return $retorno;
+    }
 ?>
