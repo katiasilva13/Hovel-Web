@@ -1,4 +1,4 @@
-<?php require("header.php"); ?>
+<?php require_once("header.php"); ?>
 <!-- ============================================================== -->
 <!-- End Left Sidebar - style you can find in sidebar.scss  -->
 <!-- ============================================================== -->
@@ -16,7 +16,7 @@
                 <div class="ml-auto text-right">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="../home.php">Home</a></li>
+                            <li class="breadcrumb-item"><a href="home.php">Home</a></li>
                             <li class="breadcrumb-item"><a>Vendas</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Funcionários</li>
                         </ol>
@@ -54,78 +54,22 @@
                                 </thead>
                                 <tbody>
                                     <?php
+                                    error_reporting(E_ALL);
+                                    ini_set('display_errors', 1);
                                     $tipo = "usuario";
+                                    $retorno = array();
                                     include("../api/controller/listEmployees.php");
-
-                                    $i = 1;
                                     foreach ($retorno as $value) {
                                         $id = $value["idPessoa"];
                                     ?>
 
                                         <tr>
-                                            <td><?= $i++ ?></td>
                                             <td><?= $value["nome"]; ?></td>
                                             <td><?= $value["usuario"]; ?></td>
                                             <td><?= $value["email"]; ?></td>
                                             <td><?= $value["cpf"]; ?></td>
                                             <td><?= $value["telefone"]; ?></td>
-                                            <td><span class="badge badge-pill badge-dark">Dono</span> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kátia Marina Silva</td>
-                                            <td>@katiasilva13</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><span class="badge badge-pill badge-warning">Desenvolvedor</span> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Deshmukh Prohaska</td>
-                                            <td>@Genelia</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><span class="badge badge-pill badge-danger">Admin</span> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Joshi Hickle</td>
-                                            <td>@Maruti</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><span class="badge badge-pill badge-light">Caixa</span> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Johnatan Nigam</td>
-                                            <td>@superDead</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><span class="badge badge-pill badge-primary">Estoquista</span> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nigam Eichmann</td>
-                                            <td>@Sonu</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><span class="badge badge-pill badge-success">Gerente</span> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nigam Johns</td>
-                                            <td>@walkingNatural</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><span class="badge badge-pill badge-secondary">Cozinheiro</span> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Roshan Rogahn</td>
-                                            <td>@Hritik</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><span class="badge badge-pill badge-info">Garçom</span> </td>
+                                            <td><span class="badge badge-pill badge-secondary">Visitante</span> </td>
                                         </tr>
                                     <?php
                                     }

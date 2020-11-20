@@ -36,95 +36,94 @@
         <!-- Start Page Content -->
         <!-- ============================================================== -->
         <!-- Row -->
-        <div class="row">
-            <!-- Column -->
-            <div class="col-lg-4 col-xlg-3 col-md-5">
-                <div class="card">
-                    <div class="card-body">
-                        <center class="m-t-30"> <img src="../assets/images/users/1.jpg" class="img-circle" width="150" />
-                            <h4 class="card-title m-t-10">
-                                <br>Aparato Futurista 1 <?= $_SESSION["idPessoa"]; ?>
-                            </h4>
-                            <h6 class="card-subtitle">Dono <?= $_GET["idPessoa"]; ?></h6>
-                        </center>
+        <?php
+        if (!isset($_GET) || empty($_GET)) {
+            //$erro = 'Nada foi postado.';
+        } else {
+            if (empty($_GET["idPessoa"])) {
+                if ($_GET["mensagem"]) {
+                    $mensagem = $_GET["mensagem"];
+                    if ($mensagem == "sucesso") {
+        ?>
+                        <div class="alert alert-success" role="alert">
+                            Usuário alterado com sucesso!!!
+                        </div>
+                    <?php
+                    } elseif ($mensagem == "erro") {
+                    ?>
+                        <div class="alert alert-danger" role="alert">
+                            Ocorreu um erro ao alterar o usuário!!!
+                        </div>
+                <?php
+                    }
+                }
+            }
+            if (!empty($_SESSION["idPessoa"])) {
+                $id = $_SESSION["idPessoa"];
+                $retorno = array();
+                include("..\api\controller\loadProfile.php");
+                ?>
+                <div class="row">
+                    <!-- Column -->
+
+
+                    <div class="col-lg-4 col-xlg-3 col-md-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <center class="m-t-30"> <img src="../assets/images/users/1.jpg" class="img-circle" width="150" />
+                                    <h4 class="card-title m-t-10">
+                                        <br> <?= $retorno[0]["nome"]; ?>
+                                    </h4>
+                                    <h6 class="card-subtitle">Visitante</h6>
+                                </center>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <!-- Column -->
-            <!-- Column -->
-            <div class="col-lg-8 col-xlg-9 col-md-7">
-                <div class="card">
-                    <!-- Tab panes -->
-                    <div class="card-body">
-
-                        <?php
-                        if (!isset($_GET) || empty($_GET)) {
-                            //$erro = 'Nada foi postado.';
-                        } else {
-                            if (empty($_GET["idPessoa"])) {
-                                if ($_GET["mensagem"]) {
-                                    $mensagem = $_GET["mensagem"];
-                                    if ($mensagem == "sucesso") {
-                        ?>
-                                        <div class="alert alert-success" role="alert">
-                                            Usuário Alterado com sucesso!!!
-                                        </div>
-                                    <?php
-                                    } elseif ($mensagem == "erro") {
-                                    ?>
-                                        <div class="alert alert-danger" role="alert">
-                                            Ocorreu um erro ao alterar o Usuário!!!
-                                        </div>
-                                    <?php
-                                    }
-                                }
-                            } elseif (!empty($_GET["idPessoa"])) {
-                                $id = $_GET["idPessoa"];
-                                $tipo = "unico";
-                                $retorno = array();
-                                include("../api/controller/loadProfile.php");
-                                // 
-                                // 
-                                //          var_dump($retorno);exit;          
-
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-8 col-xlg-9 col-md-7">
+                        <div class="card">
+                            <!-- Tab panes -->
+                            <div class="card-body">
+                                <?php
                                 foreach ($retorno as $value) {
-                                    ?>
+                                ?>
 
                                     <form class="form-horizontal form-material form-row" action="../api/controller/updateUser.php" method="post">
                                         <div class="form-group col-md-12">
-                                            <label class="col-md-10">Nome Completo <?= $id ?></label>
+                                            <label class="col-md-10">Nome completo </label>
                                             <div class="col-md-12">
-                                                <input type="text" id="nome" name="nome" value='<?= $value["nome"]; ?>' placeholder="Aparato Futurista" class="form-control form-control-line">
+                                                <input type="text" id="nome" name="nome" value='<?= $value["nome"]; ?>' class="form-control form-control-line">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label class="col-md-9">CPF</label>
                                             <div class="col-md-9">
-                                                <input type="text" id="cpf" name="cpf" value=<?= $value["cpf"]; ?> placeholder="123.456.789-00" class="form-control form-control-line">
+                                                <input type="text" id="cpf" name="cpf" value='<?= $value["cpf"]; ?>' class="form-control form-control-line">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label class="col-md-10">Telefone</label>
                                             <div class="col-md-10">
-                                                <input type="text" id="telefone" name="telefone" value=<?= $value["telefone"]; ?> placeholder="(44) 9 3276 0000" class="form-control form-control-line">
+                                                <input type="text" id="telefone" name="telefone" value='<?= $value["telefone"]; ?>' placeholder="(00) 9 0000 0000" class="form-control form-control-line">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label class="col-md-8">Usuário</label>
                                             <div class="col-md-8">
-                                                <input type="text" id="usuario" name="usuario" value=<?= $value["usuario"]; ?> placeholder="teste" class="form-control form-control-line">
+                                                <input type="text" id="usuario" name="usuario" value='<?= $value["usuario"]; ?>' class="form-control form-control-line">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="example-email" class="col-md-12">Email</label>
                                             <div class="col-md-12">
-                                                <input type="email" id="email" name="email" value=<?= $value["email"]; ?> placeholder="aparato@futurista.com" class="form-control form-control-line">
+                                                <input type="email" id="email" name="email" value='<?= $value["email"]; ?>' class="form-control form-control-line">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="col-md-12">Senha</label>
                                             <div class="col-md-12">
-                                                <input type="password" id="novaSenha" name="novaSenha" value=<?= $value["senha"]; ?>class="form-control form-control-line">
+                                                <input type="password" id="novaSenha" name="novaSenha" class="form-control form-control-line">
                                             </div>
                                         </div>
                                         <label class="col-md-12 d-none">
@@ -180,21 +179,23 @@
                                             </div>
                                         </div>
                                     </form>
-                        <?php
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Column -->
+                </div>
+    <?php
                                 }
                             }
                         }
-                        // 
-                        ?>
-                    </div>
-                </div>
-            </div>
-            <!-- Column -->
-        </div>
-        <!-- Row -->
-        <!-- ============================================================== -->
-        <!-- End PAge Content -->
-        <!-- ============================================================== -->
+    ?>
+    <!-- Row -->
+    <!-- ============================================================== -->
+    <!-- End PAge Content -->
+    <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
     <!-- End Container fluid  -->

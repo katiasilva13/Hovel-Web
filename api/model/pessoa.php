@@ -56,6 +56,9 @@ class Pessoa{
         if(count($results) > 0){
           $this->setData($results[0]);
         }
+        return $results;
+    //    print_r("linha 59 results=" . $results[0]);
+     //   var_dump($results);  
     } 
 
     public function login($usuario, $senha){
@@ -88,6 +91,7 @@ class Pessoa{
         if(count($results) > 0){
             $this->setData($results[0]);
         }
+        return $results;
             
     }
 
@@ -102,7 +106,7 @@ class Pessoa{
         $this->setTelefone($telefone);
 
         $sql = new Sql();
-        $sql->query("UPDATE pessoa SET nome=:NOME, telefone=:TELEFONE, cpf=:CPF, email=:EMAIL, usuario=:LOGIN, senha=:PASSWORD WHERE idPessoa=:ID",
+        $results = $sql->query("UPDATE pessoa SET nome=:NOME, telefone=:TELEFONE, cpf=:CPF, email=:EMAIL, usuario=:LOGIN, senha=:PASSWORD WHERE idPessoa=:ID",
         array(
           //  ":ID_END"=>$this->getIdEndereco(),
             ":LOGIN"=>$this->getUsuario(),
@@ -113,6 +117,7 @@ class Pessoa{
             ":TELEFONE"=>$this->getTelefone(),
             ":ID"=>$this->getIdPessoa()
         ));
+        return $results;
     }
 
     public function delete(){
