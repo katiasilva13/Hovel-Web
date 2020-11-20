@@ -1,26 +1,23 @@
 <?php
 include('sql.php');
 class Venda{
-    private $idPedido, $status, $valorTotal, $tipoPagamento;
+    private $idVenda, $valorTotal, $tipoPagamento;
 
-    public function __construct($status="", $valorTotal="", $tipoPagamento="")
+    public function __construct($valorTotal="", $tipoPagamento="")
     {
-        $this->setStatus($status);
         $this->setValorTotal($valorTotal);
         $this->setTipoPagamento($tipoPagamento);
     }
     
     public function setData($data){
-        $this->setIdPedido($data['idpedido']);
-        $this->setStatus($data['status']);
+        $this->setidVenda($data['idVenda']);
         $this->setValorTotal($data['valorTotal']);
         $this->setTipoPagamento($data['tipoPagamento']);
     }
     public function __toString()
     {
         return json_encode(array(
-            "idpedido"=>$this->getIdPedido(),
-            "status"=>$this->getStatus(),
+            "idVenda"=>$this->getidVenda(),
             "valorTotal"=>$this->getvalorTotal(),
             "tipoPagamento"=>$this->getTipoPagamento(),
         ));
@@ -28,20 +25,20 @@ class Venda{
 
     public static function getList(){
         $sql = new Sql();
-        return $sql->select("SELECT * FROM pedido ORDER BY idPedido ASC;");
+        return $sql->select("SELECT * FROM venda ORDER BY idVenda ASC;");
     }
 
-    public static function search($idPedido){
+    public static function search($idVenda){
         $sql = new Sql();
-        return $sql->select("SELECT * FROM pedido where idPedido LIKE :SEARCH ORDER BY idPedido;",
+        return $sql->select("SELECT * FROM venda where idVenda LIKE :SEARCH ORDER BY idVenda;",
          array(
-            ':SEARCHNOME'=>"%".$idPedido."%",
+            ':SEARCHID'=>"%".$idVenda."%",
            ));
     }
 
     public function loadById($id){
         $sql = new Sql();
-        $results = $sql->select("SELECT * FROM pedido where idPedido = :id", array(":id"=>$id));
+        $results = $sql->select("SELECT * FROM venda where idVenda = :id", array(":id"=>$id));
         if(count($results) > 0){
             $this->setData($results[0]);
         }
@@ -49,57 +46,47 @@ class Venda{
 
     public function insert(){
         $sql = new Sql();
-        $sql->query("INSERT INTO pedido (status, valorTotal, tipoPagamento) 
+        $sql->query("INSERT INTO venda (status, valorTotal, tipoPagamento) 
                                 value (:STATUS, :VALORTOTAL, :tipoPagamento)", 
-                                array(":STATUS"=>$this->getStatus(), 
-                                    ":VALORTOTAL"=>$this->getValorTotal(), 
+                                array(" :VALORTOTAL"=>$this->getValorTotal(), 
                                     ":tipoPagamento"=>$this->getTipoPagamento(), 
                                 ));      
         
-        $results = $sql->select("SELECT * FROM pedido WHERE idpedido = LAST_INSERT_ID()");
+        $results = $sql->select("SELECT * FROM venda WHERE idVenda = LAST_INSERT_ID()");
         if(count($results) > 0)
             $this->setData($results[0]);
     }
 
-    public function update($idpedido, $status, $valorTotal, $tipoPagamento){
-        $this->setIdpedido($idpedido);
+    public function update($idVenda, $valorTotal, $tipoPagamento){
+        $this->setidVenda($idVenda);
         $tipoPagamento($tipoPagamento);
         $this->setValorTotal($valorTotal);
-        $this->setStatus($status);
 
         $sql = new Sql();
-        $sql->query("UPDATE pedido SET status=:STATUS, valorTotal=:VALORTOTAL, tipoPagamento=:tipoPagamento, WHERE idpedido=:ID",
+        $sql->query("UPDATE venda SET valorTotal=:VALORTOTAL, tipoPagamento=:tipoPagamento, WHERE idVenda=:ID",
         array(
-            ":STATUS"=>$this->getStatus(),
             ":VALORTOTAL"=>$this->getValorTotal(),
             ":tipoPagamento"=>$this->getTipoPagamento(),
-            ":ID"=>$this->getIdpedido()
+            ":ID"=>$this->getidVenda()
         ));
     }
 
     public function delete(){
         $sql = new Sql();
-        $sql->query("DELETE FROM pedido WHERE idpedido = :ID",
-        array(":ID"=>$this->getIdpedido())
+        $sql->query("DELETE FROM venda WHERE idVenda = :ID",
+        array(":ID"=>$this->getidVenda())
         );
         //depois que excluiu limpa os dados do objeto
-        $this->setIdpedido(0);
-        $this->setStatus("");
+        $this->setidVenda(0);
         $this->setValorTotal("");
         $this->setTipoPagamento("");
     }
 
-    public function setIdpedido($value){
-        $this->idpedido=$value;
+    public function setidVenda($value){
+        $this->idVenda=$value;
     }
-    public function getIdpedido(){
-        return $this->idpedido;
-    }
-    public function setStatus($value){
-        $this->status=$value;
-    }
-    public function getStatus(){
-        return $this->status;
+    public function getidVenda(){
+        return $this->idVenda;
     }
     public function setValorTotal($value){
         $this->valorTotal=$value;

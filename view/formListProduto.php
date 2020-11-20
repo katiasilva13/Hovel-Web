@@ -22,7 +22,7 @@
 <!-- ============================================================== -->
 <!-- Pesquisar por pesquisar  -->
 <!-- ============================================================== -->
-    <form action="../api/controller/searchProduto.php" method="GET" id='form-contato' class="form-horizontal col-md-10">
+    <form action="formSearchProduto.php" method="GET" id='form-contato' class="form-horizontal col-md-10">
 				<div class='col-md-10'>
 			    	  <input type="text" class="form-control" id="pesquisar" name="pesquisar" placeholder="Pesquise por Nome">
               </div>
@@ -57,9 +57,11 @@
            <th>Nome</th>
            <th>Quantidade</th>
            <th>Preço</th>
-           <th colspan="2">AÇÃO</th>
+           <th colspan="2"></th>
 
            <?php
+          $tipo = "produto";
+
             include("../api/controller/listProduto.php");
 
             foreach ($retorno as $value) {
@@ -71,8 +73,8 @@
                 <td><?=$value["quantidade"];?></td>
                 <td><?=$value["preco"];?></td>
                 <td>
-								<a href='../api/controller/editar.php?id=id' class="btn btn-primary">Editar</a>
-                <a href='../api/controller/deleteProduto.php' class="btn btn-danger link_exclusao">Excluir</a>
+								<a href='formUpdateProduto.php?id=id' class="btn btn-primary">Editar</a>
+                <a href='../api/controller/deleteProduto.php?id=$id' class="btn btn-danger link_exclusao">Excluir</a>
 							</td>
                 </td>
               </tr>

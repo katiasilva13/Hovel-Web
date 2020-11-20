@@ -41,10 +41,13 @@ class Produto{
 
     public function loadById($id){
         $sql = new Sql();
-        $results = $sql->select("SELECT * FROM produto where idProduto = :id", array(":id"=>$id));
-        if(count($results) > 0){
-            $this->setData($results[0]);
-        }
+       return $sql->select("SELECT * FROM produto where idProduto = :id", array(":id"=>$id));
+
+      // return $results = $sql->select("SELECT * FROM produto where idProduto = :id", array(":id"=>$id));
+       
+       // if(count($results) > 0){
+           // $this->setData($results[0]);
+        //}
     } 
 
     public function insert(){
