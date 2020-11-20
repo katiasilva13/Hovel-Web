@@ -1,5 +1,5 @@
 <?php
- //require("validateLogin.php");
+//require("validateLogin.php");
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
     <!-- Custom CSS -->
     <link href="../dist/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    
+
 </head>
 
 <body>
@@ -79,8 +79,8 @@
                                 }
                             }
                             ?>
-                        </div>                          
-                 </div>  
+                        </div>
+                    </div>
                     <form class="form-horizontal m-t-20" id="loginform" action="../api/controller/login.php" method="post">
                         <div class="row p-b-30">
                             <div class="col-12">
@@ -153,21 +153,20 @@
     <!-- This page plugin js -->
     <!-- ============================================================== -->
     <script>
+        $('[data-toggle="tooltip"]').tooltip();
+        $(".preloader").fadeOut();
+        // ============================================================== 
+        // Login and Recover Password 
+        // ============================================================== 
+        $('#to-recover').on("click", function() {
+            $("#loginform").slideUp();
+            $("#recoverform").fadeIn();
+        });
+        $('#to-login').click(function() {
 
-    $('[data-toggle="tooltip"]').tooltip();
-    $(".preloader").fadeOut();
-    // ============================================================== 
-    // Login and Recover Password 
-    // ============================================================== 
-    $('#to-recover').on("click", function() {
-        $("#loginform").slideUp();
-        $("#recoverform").fadeIn();
-    });
-    $('#to-login').click(function(){
-        
-        $("#recoverform").hide();
-        $("#loginform").fadeIn();
-    });
+            $("#recoverform").hide();
+            $("#loginform").fadeIn();
+        });
     </script>
 
 </body>

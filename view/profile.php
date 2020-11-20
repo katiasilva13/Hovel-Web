@@ -65,8 +65,6 @@
                 ?>
                 <div class="row">
                     <!-- Column -->
-
-
                     <div class="col-lg-4 col-xlg-3 col-md-5">
                         <div class="card">
                             <div class="card-body">

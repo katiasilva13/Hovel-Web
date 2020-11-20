@@ -85,4 +85,3 @@ class Funcionario{
         return $this->nomeCargo;
     }
 }
-?>

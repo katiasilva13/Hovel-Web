@@ -20,7 +20,7 @@ if (isset($_POST)) {
     if (!empty($_POST["telefone"])) {
       $telefone = filter_input(INPUT_POST, "telefone", FILTER_SANITIZE_STRING);
     }
-    
+
     include("..\model\pessoa.php");
 
     $updateUsuario = new Pessoa();

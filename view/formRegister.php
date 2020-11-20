@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html dir="ltr" lang="pt-br">
 
@@ -49,15 +48,15 @@
                             } else {
                                 if ($_GET["mensagem"] == "sucesso") {
                             ?>
-                                <div class="alert alert-success" role="alert">
-                                    Usuário Cadastrado com sucesso!!!
-                                </div>
+                                    <div class="alert alert-success" role="alert">
+                                        Usuário Cadastrado com sucesso!!!
+                                    </div>
                                 <?php
                                 } else {
                                 ?>
-                                <div class="alert alert-danger" role="alert">
-                                    Ocorreu um erro ao gravar o Usuário!!!
-                                </div>
+                                    <div class="alert alert-danger" role="alert">
+                                        Ocorreu um erro ao gravar o Usuário!!!
+                                    </div>
                             <?php
                                 }
                             }
@@ -100,7 +99,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
                                     </div>
-                                    <input type="password" class="form-control form-control-lg" placeholder="Senha" aria-label="Password" name="senha"  aria-describedby="basic-addon1" required>
+                                    <input type="password" class="form-control form-control-lg" placeholder="Senha" aria-label="Password" name="senha" aria-describedby="basic-addon1" required>
                                 </div>
                                 <div class="input-group mb-3 d-none">
                                     <div class="input-group-prepend">
@@ -138,8 +137,8 @@
     <!-- This page plugin js -->
     <!-- ============================================================== -->
     <script>
-    $('[data-toggle="tooltip"]').tooltip();
-    $(".preloader").fadeOut();
+        $('[data-toggle="tooltip"]').tooltip();
+        $(".preloader").fadeOut();
     </script>
 </body>
 
