@@ -59,9 +59,12 @@ class Produto{
                                     ":PRECO"=>$this->getPreco(), 
                                 ));      
         
-       /* $results = $sql->select("SELECT * FROM Produto WHERE idProduto = LAST_INSERT_ID()");
-        if(count($results) > 0)
-            $this->setData($results[0]);*/
+        $results = $sql->select("SELECT * FROM Produto WHERE idProduto = LAST_INSERT_ID()");
+        if(count($results) > 0){
+            $this->setData($results[0]);
+        }
+        return $results;
+            
     }
 
     public function update($idProduto, $nomeProduto, $quantidade, $preco){
@@ -71,18 +74,21 @@ class Produto{
         $this->setNomeProduto($nomeProduto);
 
         $sql = new Sql();
-        $sql->query("UPDATE produto SET nomeProduto=:NOMEPRODUTO, quantidade=:QUANTIDADE, preco=:PRECO, WHERE idProduto=:ID",
+        $results = $sql->query("UPDATE produto SET nomeProduto=:NOME, quantidade=:QUANT, preco=:PRECO WHERE idProduto=:ID",
         array(
-            ":NOMEPRODUTO"=>$this->getnomeProduto(),
-            ":QUANTIDADE"=>$this->getQuantidade(),
+            ":NOME"=>$this->getnomeProduto(),
+            ":QUANT"=>$this->getQuantidade(),
             ":PRECO"=>$this->getpreco(),
             ":ID"=>$this->getIdProduto()
         ));
+
+        return $results;
     }
 
-    public function delete(){
+    public function delete($idProduto){
+        $this->setIdProduto($idProduto);
         $sql = new Sql();
-        $sql->query("DELETE FROM produto WHERE idProduto = :ID",
+        $results = $sql->query("DELETE FROM produto WHERE idProduto = :ID",
         array(":ID"=>$this->getIdProduto())
         );
         //depois que excluiu limpa os dados do objeto
@@ -90,6 +96,7 @@ class Produto{
         $this->setNomeProduto("");
         $this->setQuantidade("");
         $this->setPreco("");
+        return $results;
     }
 
     public function setIdProduto($value){
