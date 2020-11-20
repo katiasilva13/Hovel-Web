@@ -124,7 +124,7 @@
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="under_construction.html" aria-expanded="false"><i class="mdi mdi-scale"></i><span class="hide-menu"> Cozinha </span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="under_construction.html" aria-expanded="false"><i class="mdi mdi-food"></i><span class="hide-menu"> Cardápio </span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="under_construction.html" aria-expanded="false"><i class="mdi mdi-store"></i><span class="hide-menu"> Estoque </span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="formListProduto.php" aria-expanded="false"><i class="mdi mdi-store"></i><span class="hide-menu"> Estoque </span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link d-none" href="under_construction.html" aria-expanded="false"><i class="mdi mdi-scale-balance"></i><span class="hide-menu"> Contas a pagar </span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark d-none" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-move-resize-variant "></i><span class="hide-menu">Outros </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">

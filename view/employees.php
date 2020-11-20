@@ -17,7 +17,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="home.php">Home</a></li>
-                            <li class="breadcrumb-item"><a>Vendas</a></li>
+                            <li class="breadcrumb-item"><a>Colaboradores</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Funcionários</li>
                         </ol>
                     </nav>
