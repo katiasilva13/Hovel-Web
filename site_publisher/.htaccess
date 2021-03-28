@@ -1,0 +1,65 @@
+# Ajuda nas config
+# https://ajuda.locaweb.com.br/wiki/comandos-uteis-no-htaccess/
+# https://stackoverflow.com/questions/25570255/remove-multiple-file-extensions-with-htaccess
+# https://wiki.goinfinite.net/artigos/remover-extensoes-de-url/
+# https://www.weblink.com.br/ajuda/o-mod-rewrite-esta-habilitado
+
+# Listagem de arquivos e diretórios
+Options -Indexes
+
+Options -Multiviews
+
+# Forçar redirecionamento de http para https (SSL)
+RewriteEngine On
+RewriteCond %{HTTPS} !on
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+# Redirecionando URLs sem www para URLs com www:
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^hovel.heliohost.org
+RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+ErrorDocument 404 /erros/error-404.html
+
+# Reescrevendo produto.php?id=12 para produto-12.html:
+# RewriteEngine on
+# RewriteRule ^produto-([0-9]+)\.html$ produto.php?id=$1
+
+# Reescrevendo produto.php?id=12 para produto/hub-usb/12.html:
+# RewriteEngine on
+# RewriteRule ^produto/([a-zA-Z0-9_-]+)/([0-9]+)\.html$ produto.php?id=$2
+
+# Removendo extensões de arquivos das URLs
+# RewriteEngine On
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{REQUEST_FILENAME}\.html -f
+# RewriteRule ^(.*)$ $1.html
+
+# Remover Múltiplas Extensões de URL
+# <IfModule mod_rewrite.c>
+    # RewriteEngine on
+    # RewriteBase /
+  #terminate all rewrite loops
+    # RewriteCond %{ENV:REDIRECT_STATUS} 200
+    # RewriteRule ^ - [L]
+  #1)Remove ".html" , ".php",".css" extension.
+  #The following rule redirects "/file.ext" to "/file" 
+    # RewriteRule ^(.+)\.(html|php|css)$ $1 [L,R,NE]
+    # RewriteRule ^(.+)\.(html|css)$ $1 [L,R,NE]
+  #checks if "/file" .html exists, if it exits ,map "/file" to "/file.html"
+    # RewriteCond %{REQUEST_FILENAME}.html -f
+    # RewriteRule ^(.*?)/?$ $1.html [L]
+  #checks if "/file" .php exists, if it exits ,map "/file" to "/file.php"
+    # RewriteCond %{REQUEST_FILENAME}.php -f
+    # RewriteRule ^(.*?)/?$ $1.php [L]
+  #checks if "/file" .css exists, if it exits ,map "/file" to "/file.css"
+    # RewriteCond %{REQUEST_FILENAME}.css -f
+    # RewriteRule ^(.*?)/?$ $1.css [L]
+# </IfModule>
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php72” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddType application/x-httpd-ea-php72 .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

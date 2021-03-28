@@ -5,6 +5,6 @@
 !/assets/libs/bootstrap/css
 /dist/js/
 /dist/css/icons/
-/site_publisher/
-/db_script/
+#/site_publisher/
+#/db_script/
 index.php
